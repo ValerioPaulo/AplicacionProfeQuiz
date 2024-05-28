@@ -10,7 +10,7 @@
 
     <item
         android:id="@+id/shorts"
-        android:title="Docentes"
+        android:title="Perfil de Docente"
         android:icon="@drawable/baseline_whatshot_24"
         />
 
