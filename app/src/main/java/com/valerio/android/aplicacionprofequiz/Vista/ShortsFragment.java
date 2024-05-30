@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class  ShortsFragment extends Fragment implements Response.Listener<JSONObject>, Response.ErrorListener {
 
     public ShortsFragment() {
-        // Required empty public constructor
+        // aRequired empty public constructor
     }
 
 
