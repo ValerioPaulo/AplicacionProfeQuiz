@@ -7,10 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.valerio.android.aplicacionprofequiz.R;
 
-public class  ShortsFragment extends Fragment {
+import org.json.JSONObject;
+
+public class  ShortsFragment extends Fragment implements Response.Listener<JSONObject>, Response.ErrorListener {
 
     public ShortsFragment() {
         // Required empty public constructor
@@ -28,5 +33,15 @@ public class  ShortsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_perfil_docente, container, false);
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError volleyError) {
+
+    }
+
+    @Override
+    public void onResponse(JSONObject jsonObject) {
+
     }
 }
