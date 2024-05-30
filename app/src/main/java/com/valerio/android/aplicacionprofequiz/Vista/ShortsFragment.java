@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.valerio.android.aplicacionprofequiz.R;
 
-public class ShortsFragment extends Fragment {
+public class  ShortsFragment extends Fragment {
 
     public ShortsFragment() {
         // Required empty public constructor

@@ -5,4 +5,18 @@
     <string name="text_other">Cualquier texto</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Perfil Docente-->
+    <string name="PerfilTxt">Perfil del docente</string>
+    <string name="IdDato">ID</string>
+    <string name="NombreDato">NombreApellido</string>
+    <string name="NombreCDato">Nombre Completo:</string>
+    <string name="DatoPersonalDato">DatosPersonales</string>
+    <string name="ValorDato">Valor</string>
+    <string name="CorreoDato">Correo Institucional:</string>
+    <string name="CarreraDato">Carrera:</string>
+    <string name="UniDato">Universidad:</string>
+    <string name="AcercaDato">Acerca de mí</string>
+    <string name="CusoDato">Cursos en UTP</string>
+    <string name="MetoDato">Metodología de enseñanza</string>
+    <string name="ResenaDato">Ver reseñas</string>
 </resources>
