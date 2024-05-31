@@ -291,7 +291,7 @@
                     android:textColor="#000"/>
             </LinearLayout>
 
-            <!-- Box Metodologia de enseñanza-->
+            <!-- Box Metodologia de enseñanzaa-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -301,7 +301,7 @@
                 android:layout_marginTop="10dp"
                 android:background="#fff">
 
-                <!-- Titulo de Metodologia de enseñanza-->
+                <!-- Titulo de Metodología de enseñanza-->
                 <TextView
                     android:text="@string/MetoDato"
                     android:textSize="25sp"
@@ -324,14 +324,6 @@
                     android:textSize="18sp"
                     android:textColor="#000"/>
             </LinearLayout>
-
-            <!-- Button de Reseñas -->
-            <Button
-                android:text="@string/ResenaDato"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="20sp"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
