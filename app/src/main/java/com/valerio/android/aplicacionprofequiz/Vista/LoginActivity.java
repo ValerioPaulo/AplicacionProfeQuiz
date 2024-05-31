@@ -51,6 +51,13 @@ public class LoginActivity extends AppCompatActivity {
             LoginUsuario(user, password);
         });
 
+        mActivityLoginBinding.iniciarSesionLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
+
         // Ir al registro
         TextView textViewRegistro = findViewById(R.id.textView_registro);
         textViewRegistro.setOnClickListener(new View.OnClickListener() {
