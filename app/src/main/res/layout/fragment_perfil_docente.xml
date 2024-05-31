@@ -291,7 +291,7 @@
                     android:textColor="#000"/>
             </LinearLayout>
 
-            <!-- Box Metodologia de enseñanza-->
+            <!-- Box Metodologia de enseñanzaa-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
