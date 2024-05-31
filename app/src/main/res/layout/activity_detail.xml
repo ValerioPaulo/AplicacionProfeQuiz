@@ -38,7 +38,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/calificacion"
+            android:id="@+id/cal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Calificación"
