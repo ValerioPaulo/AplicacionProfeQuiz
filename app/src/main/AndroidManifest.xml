@@ -19,6 +19,9 @@
             android:name=".Vista.RegistroActivity"
             android:exported="false" />
         <activity
+            android:name=".Vista.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".Vista.MainActivity"
             android:exported="false" />
         <activity

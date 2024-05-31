@@ -35,10 +35,11 @@
 
             <!-- Imagen del docente -->
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/fot"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
-                android:src="@raw/perfil"/>
+                android:src="@raw/perfil" />
 
             <!-- Nombre y apellido del docente -->
             <TextView
@@ -64,12 +65,13 @@
 
                     <!-- valor de la calificacion -->
                     <TextView
-                        android:text="4.2"
-                        android:textSize="25dp"
-                        android:textColor="#fff"
+                        android:id="@+id/cal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:text="4.2"
+                        android:textColor="#fff"
+                        android:textSize="25dp" />
 
                     <!-- imagen de la estrella-->
                     <ImageView

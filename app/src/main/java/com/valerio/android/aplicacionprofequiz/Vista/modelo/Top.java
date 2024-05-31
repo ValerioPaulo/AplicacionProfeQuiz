@@ -1,6 +1,8 @@
 package com.valerio.android.aplicacionprofequiz.Vista.modelo;
 
-public class Top {
+import java.io.Serializable;
+
+public class Top  implements Serializable {
     //Esta clase representa la estructura de datos generada por el JSON
     private String cod_prof;
     private String nombre_completo;
