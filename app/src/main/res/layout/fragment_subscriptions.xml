@@ -1,20 +1,126 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Vista.SubscriptionsFragment">
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Vista.Encuesta">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Con restpecto a la clase del profesor, de 1 a 5,
+            ¿Qué tan beneficiosa fue la clase para ti?"
+        android:textSize="18sp" />
+
+    <RadioGroup
+        android:id="@+id/question1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton android:id="@+id/question1_option1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1" />
+        <RadioButton android:id="@+id/question1_option2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2" />
+        <RadioButton android:id="@+id/question1_option3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3" />
+        <RadioButton android:id="@+id/question1_option4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4" />
+        <RadioButton android:id="@+id/question1_option5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5" />
+    </RadioGroup>
+
+    <!-- Repeat the above block for each question -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="De 1 a 5 ¿Qué estan satisfecho estas con le formato de la clase que ofrece el profesor?"
+        android:textSize="18sp" />
+
+    <RadioGroup
+        android:id="@+id/question2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton android:id="@+id/question2_option1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1" />
+        <RadioButton android:id="@+id/question2_option2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2" />
+        <RadioButton android:id="@+id/question2_option3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3" />
+        <RadioButton android:id="@+id/question2_option4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4" />
+        <RadioButton android:id="@+id/question2_option5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5" />
+    </RadioGroup>
+
+    <!-- Add additional questions similarly -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Como calificarias la organizacion de la clase"
+        android:textSize="18sp" />
+
+    <RadioGroup
+        android:id="@+id/question3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton android:id="@+id/question3_option1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1" />
+        <RadioButton android:id="@+id/question3_option2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2" />
+        <RadioButton android:id="@+id/question3_option3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3" />
+        <RadioButton android:id="@+id/question3_option4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4" />
+        <RadioButton android:id="@+id/question3_option5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Como calificar  la motivador y entusiastade cada clase"
+        android:textSize="18sp" />
+
+    <RadioGroup
+        android:id="@+id/question4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton android:id="@+id/question4_option1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1" />
+        <RadioButton android:id="@+id/question4_option2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2" />
+        <RadioButton android:id="@+id/question4_option3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3" />
+        <RadioButton android:id="@+id/question4_option4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4" />
+        <RadioButton android:id="@+id/question4_option5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="De 1 a 5, Como calificarias los metodos de ensañanza"
+        android:textSize="18sp" />
+
+    <RadioGroup
+        android:id="@+id/question5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton android:id="@+id/question5_option1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1" />
+        <RadioButton android:id="@+id/question5_option2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2" />
+        <RadioButton android:id="@+id/question5_option3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3" />
+        <RadioButton android:id="@+id/question5_option4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4" />
+        <RadioButton android:id="@+id/question5_option5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/commentText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textColor="#000000"
-        android:textSize="30dp"
-        android:background="#39DCA3"
-        android:textStyle="bold"
-        android:text="Fragment \nConstruya su diseño" />
+        android:layout_height="wrap_content"
+        android:hint="Escribe tus comentarios aquí"
+        android:inputType="textMultiLine"
+        android:gravity="top"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:minLines="4"/>
 
+    <!-- Botón de envío -->
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar"
+        android:layout_below="@id/commentText"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
 
-</FrameLayout>
+</LinearLayout>

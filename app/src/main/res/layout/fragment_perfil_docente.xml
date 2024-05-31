@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
+    android:layout_marginBottom="50dp"
     tools:context=".Vista.ShortsFragment">
 
     <!-- linear principal -->
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginBottom="30dp"
         android:padding="0dp">
 
         <!-- Sección azul -->
@@ -22,7 +24,7 @@
             android:background="#0000FF"
             android:orientation="vertical">
 
-            <!-- Palabra perfil del docente -->
+
             <TextView
                 android:text="@string/PerfilTxt"
                 android:layout_gravity="center"
@@ -33,17 +35,19 @@
 
             <!-- Imagen del docente -->
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/fot"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
-                android:src="@raw/perfil"/>
+                android:src="@raw/perfil" />
 
             <!-- Nombre y apellido del docente -->
             <TextView
-                android:text="@+id/NombreDato"
+                android:id="@+id/NombreDato"
                 android:layout_gravity="center"
                 android:textSize="25sp"
                 android:textColor="#fff"
+                android:text="Carlos García"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -61,12 +65,13 @@
 
                     <!-- valor de la calificacion -->
                     <TextView
-                        android:text="@string/ValorDato"
-                        android:textSize="25dp"
-                        android:textColor="#fff"
+                        android:id="@+id/cal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:text="4.2"
+                        android:textColor="#fff"
+                        android:textSize="25dp" />
 
                     <!-- imagen de la estrella-->
                     <ImageView
@@ -77,6 +82,7 @@
                         android:layout_marginStart="8dp"/>
                 </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
 
         <!-- Fondo piel -->
@@ -106,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
-                <!-- Linea Negra  -->
+                <!-- Linea Negraa  -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="3dp"
@@ -135,6 +141,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/NombreCompletoDato"
+                            android:text="Carlos Garcia"
                             android:textSize="18sp"
                             android:textColor="#000"/>
                     </LinearLayout>
@@ -163,6 +170,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/CorreoDato"
+                            android:text="C000001@utp.edu.pe"
                             android:textSize="18sp"
                             android:textColor="#000"/>
                     </LinearLayout>
@@ -190,6 +198,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/CarreraDato"
+                            android:text="Ingenieria de Software"
                             android:textSize="18sp"
                             android:textColor="#000"/>
                     </LinearLayout>
@@ -204,7 +213,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <!-- Universidad: -->
+                        <!-- Universidad:  -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -217,6 +226,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/UniDato"
+                            android:text="Universidad Nacional de Ingenieria"
                             android:textSize="18sp"
                             android:textColor="#000"/>
                     </LinearLayout>
@@ -253,6 +263,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/AcercaDato"
+                    android:text="Soy profesor de Ingeniería de Software, apasionado por la enseñanza y la tecnología. Con una sólida formación en desarrollo de software y experiencia en la industria, mi objetivo es preparar a los estudiantes para enfrentar los desafíos del mundo real."
                     android:textSize="18sp"
                     android:textColor="#000"/>
             </LinearLayout>
@@ -287,6 +298,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/CursoDato"
+                    android:text="Taller de programacion
+                Programacion Orientada en Objetos
+                Estructura de datos"
                     android:textSize="18sp"
                     android:textColor="#000"/>
             </LinearLayout>
@@ -299,6 +313,7 @@
                 android:padding="16dp"
                 android:gravity="top"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
                 android:background="#fff">
 
                 <!-- Titulo de Metodología de enseñanza-->
@@ -321,9 +336,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/MetoDato"
+                    android:text=" Mis clases se centran en principios fundamentales como el diseño de sistemas, la programación, la gestión de proyectos y la calidad del software, utilizando metodologías ágiles y herramientas modernas. Me esfuerzo por crear un ambiente de aprendizaje colaborativo, fomentando la innovación y el pensamiento crítico, para que mis alumnos se conviertan en profesionales competentes y líderes en el campo de la ingeniería de software."
                     android:textSize="18sp"
                     android:textColor="#000"/>
             </LinearLayout>
+            ccc
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
