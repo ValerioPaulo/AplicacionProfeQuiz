@@ -10,7 +10,7 @@
     <string name="IdDato">ID</string>
     <string name="NombreDato">NombreApellido</string>
     <string name="NombreCDato">Nombre Completo:</string>
-    <string name="DatoPersonalDato">DatosPersonales</string>
+    <string name="DatoPersonalDato">Datos Personales</string>
     <string name="ValorDato">Valor</string>
     <string name="CorreoDato">Correo Institucional:</string>
     <string name="CarreraDato">Carrera:</string>
