@@ -8,8 +8,23 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
+        android:id="@+id/tv_header"
         android:layout_width="match_parent"
-        android:layout_height="584dp" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        android:text="@string/txttitle"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_top"
+        android:layout_width="match_parent"
+        android:layout_height="652dp"
+        android:layout_marginTop="52dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
 </FrameLayout>

@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/pfot"
             android:layout_width="190dp"
             android:layout_height="115dp"
             android:layout_weight="1"
@@ -36,7 +36,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/pnom"
+                android:id="@+id/pnomape"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -44,7 +44,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/pape"
+                android:id="@+id/pcorreo"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -59,7 +59,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/peml"
+                android:id="@+id/pcarrera"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -67,7 +67,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/pf"
+                android:id="@+id/pcalificacion"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
