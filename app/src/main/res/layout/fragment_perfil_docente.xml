@@ -301,7 +301,7 @@
                 android:layout_marginTop="10dp"
                 android:background="#fff">
 
-                <!-- Titulo de Metodologiaa de enseñanza-->
+                <!-- Titulo de Metodologia de enseñanza-->
                 <TextView
                     android:text="@string/MetoDato"
                     android:textSize="25sp"
