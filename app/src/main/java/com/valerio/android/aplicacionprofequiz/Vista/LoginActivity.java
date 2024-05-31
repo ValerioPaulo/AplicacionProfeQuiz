@@ -8,6 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -23,6 +27,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.valerio.android.aplicacionprofequiz.R;
 import com.valerio.android.aplicacionprofequiz.databinding.ActivityLoginBinding;
+
+import org.json.JSONObject;
 
 import java.util.concurrent.ExecutorService;
 
@@ -51,12 +57,12 @@ public class LoginActivity extends AppCompatActivity {
             LoginUsuario(user, password);
         });
 
-        mActivityLoginBinding.iniciarSesionLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            }
-        });
+        //mActivityLoginBinding.iniciarSesionLoginBtn.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+            //public void onClick(View v) {
+              //  startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            //}
+        //});
 
         // Ir al registro
         TextView textViewRegistro = findViewById(R.id.textView_registro);
@@ -71,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void LoginUsuario(String email, String password) {
         executorService.execute(() -> {
-            String response;
+            String respuesta;
             try {
                 URL url = new URL("https://profequiz.000webhostapp.com/login/index.php");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -87,23 +93,46 @@ public class LoginActivity extends AppCompatActivity {
                 os.flush();
                 os.close();
 
+                // Leer la respuesta
+                InputStream is = conn.getInputStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line);
+                }
+                reader.close();
+                is.close();
+
                 if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                    response = "Inicio de sesión satisfactorio";
+                    respuesta = sb.toString();
                 } else {
-                    response = "Error al iniciar sesión";
+                    respuesta = "Error al iniciar sesión";
                 }
 
                 conn.disconnect();
             } catch (Exception e) {
                 Log.e("Registrar", "Error:" + e.getMessage());
-                response = "Error al iniciar sesión";
+                respuesta = "Error al iniciar sesión";
             }
 
-            final String finalResponse = response;
+            final String finalRespuesta = respuesta;
 
-
-            runOnUiThread(() -> Toast.makeText(LoginActivity.this, finalResponse, Toast.LENGTH_LONG).show());
-
+            runOnUiThread(() -> {
+                try {
+                    JSONObject jsonResponse = new JSONObject(finalRespuesta);
+                    String mensaje = jsonResponse.getString("mensaje");
+                    Toast.makeText(LoginActivity.this, mensaje, Toast.LENGTH_LONG).show();
+                    boolean success = mensaje.contains("satisfactorio");
+                    if (success) {
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(LoginActivity.this, finalRespuesta, Toast.LENGTH_LONG).show();
+                }
+            });
         });
     }
 

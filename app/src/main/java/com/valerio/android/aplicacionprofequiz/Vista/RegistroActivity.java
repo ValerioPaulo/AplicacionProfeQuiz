@@ -5,6 +5,10 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -57,7 +61,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     private void RegistrarUsuario(String user, String email, String password) {
         executorService.execute(() -> {
-            String response;
+            String respuesta;
             try {
                 URL url = new URL("https://profequiz.000webhostapp.com/login/index.php");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -73,22 +77,40 @@ public class RegistroActivity extends AppCompatActivity {
                 os.flush();
                 os.close();
 
+                // Leer la respuesta
+                InputStream is = conn.getInputStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line);
+                }
+                reader.close();
+                is.close();
+
                 if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                    response = "Registro satisfactorio";
+                    respuesta = sb.toString();
                 } else {
-                    response = "Error al registrarse";
+                    respuesta = "Error al registrarse";
                 }
 
                 conn.disconnect();
             } catch (Exception e) {
                 Log.e("Registrar", "Error:" + e.getMessage());
-                response = "Error al registrar el usuario";
+                respuesta = "Error al registrar el usuario";
             }
 
-            final String finalResponse = response;
+            final String finalRespuesta = respuesta;
 
-
-            runOnUiThread(() -> Toast.makeText(RegistroActivity.this, finalResponse, Toast.LENGTH_LONG).show());
+            runOnUiThread(() -> {
+                try {
+                    JSONObject jsonResponse = new JSONObject(finalRespuesta);
+                    String mensaje = jsonResponse.getString("mensaje");
+                    Toast.makeText(RegistroActivity.this, mensaje, Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Toast.makeText(RegistroActivity.this, finalRespuesta, Toast.LENGTH_LONG).show();
+                }
+            });
 
         });
     }
