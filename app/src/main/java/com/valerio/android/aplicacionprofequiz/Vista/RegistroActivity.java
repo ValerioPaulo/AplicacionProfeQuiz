@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import org.json.JSONObject;
 
 import com.valerio.android.aplicacionprofequiz.R;
 
@@ -85,12 +86,22 @@ public class RegistroActivity extends AppCompatActivity {
             }
 
             final String finalResponse = response;
+
+
             runOnUiThread(() -> Toast.makeText(RegistroActivity.this, finalResponse, Toast.LENGTH_LONG).show());
+
         });
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         executorService.shutdown();
+    }
+
+    private void clearInputs() {
+        editEmail.setText("");
+        editUser.setText("");
+        editPassword.setText("");
     }
 }
