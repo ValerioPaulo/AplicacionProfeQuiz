@@ -6,25 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".Vista.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- Header TextView -->
 
-    <TextView
-        android:id="@+id/tv_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
+
+    <!-- Search EditText -->
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="285dp"
+        android:layout_height="45dp"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:background="@android:color/white"
-        android:padding="16dp"
-        android:text="@string/txttitle"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="18sp" />
+        android:hint="Buscar por nombre"
+        android:padding="8dp"/>
+
+    <!-- Search Button -->
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/holo_blue_light"
+        android:text="Buscar"
+        android:textColor="@android:color/white"/>
+
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_top"
         android:layout_width="match_parent"
-        android:layout_height="652dp"
-        android:layout_marginTop="52dp">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="625dp"
+        android:layout_marginTop="70dp" />
 
 </FrameLayout>

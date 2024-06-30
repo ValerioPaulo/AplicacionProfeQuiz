@@ -33,4 +33,5 @@ public class DetailActivity extends AppCompatActivity {
         carreraProf.setText(top.getCarrera_prof());
         calificacion.setText(top.getCalificacion());
     }
+
 }

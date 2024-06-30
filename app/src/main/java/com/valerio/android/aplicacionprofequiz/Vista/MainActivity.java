@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 //import android.widget.Toolbar;
 
@@ -31,11 +33,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.valerio.android.aplicacionprofequiz.R;
+import com.valerio.android.aplicacionprofequiz.Vista.modelo.Top;
 
 import java.util.Objects;
 
@@ -137,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             if (itemId == R.id.home) {
                 selectedFragment = new HomeFragment();
             } else if (itemId == R.id.shorts) {
-                selectedFragment = new ShortsFragment();
+                selectedFragment = new DetailFragment()  ;
             } else if (itemId == R.id.subscriptions) {
                 selectedFragment = new SubscriptionsFragment();
             } else if (itemId == R.id.library) {
@@ -146,6 +150,8 @@ public class MainActivity extends AppCompatActivity {
 
             if (selectedFragment != null) {
                 replaceFragment(selectedFragment);
+
+
             }
             return true;
         });
@@ -164,10 +170,9 @@ public class MainActivity extends AppCompatActivity {
     /////////////////////
     @Override
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                drawerLayout.openDrawer(GravityCompat.START);
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            drawerLayout.openDrawer(GravityCompat.START);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -189,6 +194,19 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
+  /*  public void openDetailFragment(Top top) {
+        DetailFragment detailFragment = DetailFragment.newInstance(top);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, detailFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+        // Seleccionar la opción de perfil de docente en la barra de navegación
+        bottomNavigationView.setSelectedItemId(R.id.shorts);
+    }*/
+
+
+
 
     private void showBottomDialog() {
 
@@ -245,6 +263,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
 
     }
+
 
 
 }
