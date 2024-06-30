@@ -48,20 +48,8 @@ public class HomeFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.rv_top);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
 
-        EditText searchEditText = rootView.findViewById(R.id.searchEditText);
-        Button searchButton = rootView.findViewById(R.id.searchButton);
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String query = searchEditText.getText().toString();
-                if (topAdapter != null) {
-                    topAdapter.filter(query);
-                }
-            }
-        });
         showTop();
-
 
         return rootView;
     }

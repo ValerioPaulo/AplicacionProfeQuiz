@@ -11,9 +11,9 @@ import com.valerio.android.aplicacionprofequiz.R;
 import com.valerio.android.aplicacionprofequiz.Vista.modelo.Top;
 
 public class DetailActivity extends AppCompatActivity {
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_perfil_docente);
+
+   /* protected void onCreate(Bundle savedInstanceState) {
+
 
         Top top = (Top) getIntent().getSerializableExtra("top"); // Obtener el objeto Top del intent
 
@@ -33,5 +33,5 @@ public class DetailActivity extends AppCompatActivity {
         carreraProf.setText(top.getCarrera_prof());
         calificacion.setText(top.getCalificacion());
     }
-
+    */
 }

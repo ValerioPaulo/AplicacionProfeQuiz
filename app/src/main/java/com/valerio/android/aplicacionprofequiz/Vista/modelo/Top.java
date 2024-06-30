@@ -7,9 +7,8 @@ public class Top  implements Serializable {
     private String cod_prof;
     private String nombre_completo;
     private String correo_prof;
-    private String fot_prof;
-    private String carrera_prof;
-    private String  calificacion;
+    private String curso_prof;
+    private String calificacion;
 
     public String getCod_prof() {
         return cod_prof;
@@ -35,20 +34,12 @@ public class Top  implements Serializable {
         this.correo_prof = correo_prof;
     }
 
-    public String getFot_prof() {
-        return fot_prof;
+    public String getCurso_prof() {
+        return curso_prof;
     }
 
-    public void setFot_prof(String fot_prof) {
-        this.fot_prof = fot_prof;
-    }
-
-    public String getCarrera_prof() {
-        return carrera_prof;
-    }
-
-    public void setCarrera_prof(String carrera_prof) {
-        this.carrera_prof = carrera_prof;
+    public void setCurso_prof(String curso_prof) {
+        this.curso_prof = curso_prof;
     }
 
     public String getCalificacion() {

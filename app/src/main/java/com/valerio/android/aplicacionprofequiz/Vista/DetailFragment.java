@@ -16,7 +16,27 @@ import com.valerio.android.aplicacionprofequiz.R;
 import com.valerio.android.aplicacionprofequiz.Vista.modelo.Top;
 
 public class DetailFragment extends Fragment {
-    private static final String ARG_TOP = "top";
+
+
+
+        public DetailFragment() {
+            // Required empty public constructor
+        }
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            // Inflate the layout for this fragment
+            return inflater.inflate(R.layout.fragment_perfil_docente, container, false);
+        }
+
+   /* private static final String ARG_TOP = "top";
 
     // Método para crear una nueva instancia del fragmento con un objeto Top como argumento
     public static DetailFragment newInstance(Top top) {
@@ -55,6 +75,8 @@ public class DetailFragment extends Fragment {
 
         return view;
     }
+
+    */
 
 }
 
