@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,9 @@ public class HomeFragment extends Fragment {
     private List<Top> top;
     private RecyclerView recyclerView;
     private TopAdapter topAdapter;
+
+    private EditText searchEditText;
+    private Button searchButton;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -49,10 +54,36 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
 
 
+        searchEditText = rootView.findViewById(R.id.searchEditText);
+
+
         showTop();
+
+        // actualiza el filtro mientras se escribe
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (topAdapter != null) {
+                    topAdapter.getFilter().filter(s.toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
 
         return rootView;
     }
+
+
+
+
+
+
     public void showTop(){
         Call<List<Top>> call= ApiClient.getClient().create(ApiTop.class).getTop();
         call.enqueue(new Callback<List<Top>>() {

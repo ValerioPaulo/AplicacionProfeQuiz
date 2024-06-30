@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.widget.Filter;
+import android.widget.Filterable;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -28,54 +29,88 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
-    private  List<Top> top;
-    private  Context context;
+    private List<Top> top;
+    private List<Top> topFiltered;
+    private Context context;
 
     public TopAdapter(List<Top> top, Context context) {
         this.top = top;
+        this.topFiltered = new ArrayList<>(top);
         this.context = context;
     }
 
     @NonNull
     @Override
     public TopAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card,parent,false);
-
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.card, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TopAdapter.ViewHolder holder, int position) {
-        holder.cod.setText(top.get(position).getCod_prof());
-        holder.nom.setText(top.get(position).getNombre_completo());
-        holder.correo.setText(top.get(position).getCorreo_prof());
-       // holder.curso.setText(top.get(position).getCurso_prof());
-        holder.calificacion.setText(top.get(position).getCalificacion());
-
+        Top item = topFiltered.get(position);
+        holder.cod.setText(item.getCod_prof());
+        holder.nom.setText(item.getNombre_completo());
+        holder.correo.setText(item.getCorreo_prof());
+        holder.calificacion.setText(item.getCalificacion());
     }
 
     @Override
     public int getItemCount() {
-        return top.size();
+        return topFiltered.size();
+    }
+
+
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                List<Top> filteredList = new ArrayList<>();
+
+                if (constraint == null || constraint.length() == 0) {
+                    // Si no hay filtro, muestra todos los datos
+                    filteredList.addAll(top);
+                } else {
+                    String filterPattern = constraint.toString().toLowerCase().trim();
+
+                    for (Top item : top) {
+                        String itemName = item.getNombre_completo().toLowerCase();
+                        if (itemName.contains(filterPattern)) {
+                            filteredList.add(item);
+                        }
+                    }
+                }
+
+                FilterResults results = new FilterResults();
+                results.values = filteredList;
+                return results;
+            }
+
+            @SuppressWarnings("unchecked")
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                topFiltered.clear();
+                if (results.values != null) {
+                    topFiltered.addAll((List<Top>) results.values);
+                }
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         private TextView cod;
         private TextView nom;
         private TextView correo;
-        private TextView curso;
         private TextView calificacion;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            cod=itemView.findViewById(R.id.pcod);
-            nom=itemView.findViewById(R.id.pnomape);
-            correo=itemView.findViewById(R.id.pcorreo);
-          //  curso=itemView.findViewById(R.id.pcurso);
-            calificacion=itemView.findViewById(R.id.pcalificacion);
+            cod = itemView.findViewById(R.id.pcod);
+            nom = itemView.findViewById(R.id.pnomape);
+            correo = itemView.findViewById(R.id.pcorreo);
+            calificacion = itemView.findViewById(R.id.pcalificacion);
         }
     }
 }
