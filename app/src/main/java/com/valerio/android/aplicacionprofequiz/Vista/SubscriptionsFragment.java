@@ -60,8 +60,8 @@ public class SubscriptionsFragment extends Fragment {
         question5 = view.findViewById(R.id.question5);
         commentText = view.findViewById(R.id.commentText);
         submitButton = view.findViewById(R.id.submitButton);
-        //spinnerOptions = view.findViewById(R.id.spinnerProfessors);
-        //mostrarProfesor = view.findViewById(R.id.mostrarProfesor);
+        spinnerOptions = view.findViewById(R.id.spinnerProfessors);
+        mostrarProfesor = view.findViewById(R.id.mostrarProfesor);
 
         // Configurar adaptador para el Spinner
         spinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item);
