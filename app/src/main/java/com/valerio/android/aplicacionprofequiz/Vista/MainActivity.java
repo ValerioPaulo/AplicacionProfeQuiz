@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (id == R.id.nav_settings) {
                 // Inicia SettingsActivity cuando se selecciona "Settings"
-               // Intent intent = new Intent(MainActivity.this, MuestraActivity.class);
+                // Intent intent = new Intent(MainActivity.this, MuestraActivity.class);
                 //startActivity(intent);
 
             } else if (id == R.id.nav_home) {
@@ -98,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
                 //replaceFragment(new HomeFragment());
             } else if (id == R.id.nav_share) {
                 // Aquí puedes agregar la acción para "Share"
-               // Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
-               // startActivity(intent);
+                // Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+                // startActivity(intent);
 
             } else if (id == R.id.nav_about) {
                 // Aquí puedes agregar la acción para "About Us"
@@ -194,6 +194,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
+
+
   /*  public void openDetailFragment(Top top) {
         DetailFragment detailFragment = DetailFragment.newInstance(top);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

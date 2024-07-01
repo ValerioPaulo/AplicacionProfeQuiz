@@ -1,42 +1,41 @@
 package com.valerio.android.aplicacionprofequiz.Vista.adaptadore;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.valerio.android.aplicacionprofequiz.R;
-import com.valerio.android.aplicacionprofequiz.Vista.DetailActivity;
 import com.valerio.android.aplicacionprofequiz.Vista.DetailFragment;
-import com.valerio.android.aplicacionprofequiz.Vista.MainActivity;
+import com.valerio.android.aplicacionprofequiz.Vista.SharedViewModel;
 import com.valerio.android.aplicacionprofequiz.Vista.modelo.Top;
 
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
+public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> implements Filterable {
     private List<Top> top;
     private List<Top> topFiltered;
     private Context context;
+    private SharedViewModel viewModel;
 
-    public TopAdapter(List<Top> top, Context context) {
+    // Constructor único que acepta todos los parámetros necesarios
+    public TopAdapter(List<Top> top, Context context, SharedViewModel viewModel) {
         this.top = top;
         this.topFiltered = new ArrayList<>(top);
         this.context = context;
+        this.viewModel = viewModel;
     }
 
     @NonNull
@@ -48,12 +47,26 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TopAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Top item = topFiltered.get(position);
         holder.cod.setText(item.getCod_prof());
         holder.nom.setText(item.getNombre_completo());
         holder.correo.setText(item.getCorreo_prof());
         holder.calificacion.setText(item.getCalificacion());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (viewModel != null) {
+                viewModel.selectName(item.getNombre_completo());
+                // Navega al fragmento de detalle
+                FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.uno, new DetailFragment())
+                        .addToBackStack(null)
+                        .commit();
+            } else {
+                Log.e("TopAdapter", "SharedViewModel is null");
+            }
+        });
     }
 
     @Override
@@ -61,7 +74,7 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
         return topFiltered.size();
     }
 
-
+    @Override
     public Filter getFilter() {
         return new Filter() {
             @Override
@@ -69,14 +82,12 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
                 List<Top> filteredList = new ArrayList<>();
 
                 if (constraint == null || constraint.length() == 0) {
-                    // Si no hay filtro, muestra todos los datos
                     filteredList.addAll(top);
                 } else {
                     String filterPattern = constraint.toString().toLowerCase().trim();
 
                     for (Top item : top) {
-                        String itemName = item.getNombre_completo().toLowerCase();
-                        if (itemName.contains(filterPattern)) {
+                        if (item.getNombre_completo().toLowerCase().contains(filterPattern)) {
                             filteredList.add(item);
                         }
                     }
@@ -114,3 +125,4 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ViewHolder> {
         }
     }
 }
+

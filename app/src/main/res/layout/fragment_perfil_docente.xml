@@ -2,11 +2,12 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/unwwwo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
     android:layout_marginBottom="50dp"
-    tools:context=".Vista.ShortsFragment">
+   >
 
     <!-- linear principal -->
     <LinearLayout
@@ -44,12 +45,13 @@
             <!-- Nombre y apellido del docente -->
             <TextView
                 android:id="@+id/NombreDato"
-                android:layout_gravity="center"
+                android:layout_width="389dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:textSize="25sp"
                 android:textColor="#fff"
                 android:text="Carlos García"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                />
 
             <!-- Box de Calificacion + estrella del docente -->
             <LinearLayout
@@ -231,42 +233,43 @@
                             android:textColor="#000"/>
                     </LinearLayout>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#fff"
+                    android:gravity="top"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Titulo acerca de mi-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/AcercaDato"
+                        android:textColor="#000"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <!-- Linea Negra  -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:background="#000" />
+
+                    <!-- Get Texto AcercaDato BD -->
+                    <TextView
+                        android:id="@+id/AcercaDato"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Soy profesor de Ingeniería de Software, apasionado por la enseñanza y la tecnología. Con una sólida formación en desarrollo de software y experiencia en la industria, mi objetivo es preparar a los estudiantes para enfrentar los desafíos del mundo real."
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+                </LinearLayout>
             </LinearLayout>
 
             <!-- Box Acerca de mi -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:gravity="top"
-                android:layout_marginTop="10dp"
-                android:background="#fff">
-
-                <!-- Titulo acerca de mi-->
-                <TextView
-                    android:text="@string/AcercaDato"
-                    android:textSize="25sp"
-                    android:textColor="#000"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <!-- Linea Negra  -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:background="#000"/>
-
-                <!-- Get Texto AcercaDato BD -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/AcercaDato"
-                    android:text="Soy profesor de Ingeniería de Software, apasionado por la enseñanza y la tecnología. Con una sólida formación en desarrollo de software y experiencia en la industria, mi objetivo es preparar a los estudiantes para enfrentar los desafíos del mundo real."
-                    android:textSize="18sp"
-                    android:textColor="#000"/>
-            </LinearLayout>
 
             <!-- Box Cursos en UTP-->
             <LinearLayout
@@ -340,7 +343,6 @@
                     android:textSize="18sp"
                     android:textColor="#000"/>
             </LinearLayout>
-            ccc
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
