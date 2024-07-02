@@ -26,6 +26,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.valerio.android.aplicacionprofequiz.R;
+import com.valerio.android.aplicacionprofequiz.Vista.models.UserSession;
 import com.valerio.android.aplicacionprofequiz.databinding.ActivityLoginBinding;
 
 import org.json.JSONObject;
@@ -125,6 +126,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, mensaje, Toast.LENGTH_LONG).show();
                     boolean success = mensaje.contains("satisfactorio");
                     if (success) {
+                        UserSession.setUserEmail(email);
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();

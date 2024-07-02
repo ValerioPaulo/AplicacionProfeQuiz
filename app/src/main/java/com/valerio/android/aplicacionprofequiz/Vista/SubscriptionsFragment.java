@@ -20,10 +20,13 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.valerio.android.aplicacionprofequiz.R;
+import com.valerio.android.aplicacionprofequiz.Vista.models.UserSession;
+
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +41,9 @@ public class SubscriptionsFragment extends Fragment {
 
     private ArrayAdapter<String> spinnerAdapter;
     private String[] professorsArray;
+
+    private String correo = UserSession.getUserEmail();
+    private int codigoAlumno;
 
     public SubscriptionsFragment() {
         // Required empty public constructor
@@ -70,6 +76,9 @@ public class SubscriptionsFragment extends Fragment {
 
         // Cargar nombres de profesores desde la API
         loadProfessors();
+
+        // Llamar a buscarCodigoAlumno después de cargar profesores
+        buscarCodigoAlumno();
 
         submitButton.setOnClickListener(v -> {
             if (validateInputs()) {
@@ -128,6 +137,8 @@ public class SubscriptionsFragment extends Fragment {
                 String codigo = selectedProfessor.split(" - ")[1]; // Asumiendo formato "nombre - codigo"
                 params.put("cod_profe", codigo);
 
+                params.put("cod_user", String.valueOf(codigoAlumno));
+
                 return params;
             }
         };
@@ -161,6 +172,43 @@ public class SubscriptionsFragment extends Fragment {
 
         requestQueue.add(jsonArrayRequest);
     }
+
+    private void buscarCodigoAlumno() {
+        String url = "https://profequiz.000webhostapp.com/oscar/buscar_alumno.php";
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        if (jsonObject.has("cod_user")) {
+                            codigoAlumno = jsonObject.getInt("cod_user");
+                            // Aquí puedes usar el código del alumno (codigoAlumno) según tus necesidades
+                            Toast.makeText(getContext(), "Código del alumno obtenido: " + codigoAlumno, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), "No se encontró código de alumno válido", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getContext(), "Error al obtener código del alumno", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    Toast.makeText(getContext(), "Error en la solicitud para obtener código del alumno", Toast.LENGTH_SHORT).show();
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("correo", correo); // Envía el correo del usuario para buscar su código de alumno
+                return params;
+            }
+        };
+
+        requestQueue.add(stringRequest);
+    }
+
+
 
     private void resetFields() {
         question1.clearCheck();
